@@ -2,15 +2,6 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
         <q-toolbar-title class="absolute-center">
           Todo
         </q-toolbar-title>
@@ -26,19 +17,13 @@
     </q-footer>
 
     <q-drawer
+      width="250"
       v-model="leftDrawerOpen"
       :breakpoint="1023"
       show-if-above
-      bordered
-      content-class="bg-grey-1"
+      elevated
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Navigation
-        </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"

@@ -54,6 +54,10 @@ module.exports = function (/* ctx */) {
 
       // Quasar plugins
       plugins: [],
+
+      config: {
+        dark: true,
+      },
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
