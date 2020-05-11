@@ -19,7 +19,7 @@
     <q-drawer
       :width="250"
       v-model="leftDrawerOpen"
-      :breakpoint="1023"
+      :breakpoint="767"
       show-if-above
       elevated
     >
@@ -72,16 +72,16 @@
 <style scoped lang="scss">
   .q-drawer {
     .q-item.q-router-link--active, .q-item--active {
-      background-color: #333;
-      color: #fff;
+      background-color: $grey-9;
+      color: $grey-1;
     }
 
     .q-item {
-      color: #aaa;
+      color: $grey-5;
     }
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     .q-footer {
       display: none;
     }
