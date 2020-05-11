@@ -53,7 +53,9 @@ module.exports = function (/* ctx */) {
       directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: [
+        'Dialog'
+      ],
 
       config: {
         dark: true,

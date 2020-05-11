@@ -17,20 +17,29 @@
       <q-item-label
         caption
         :class="task.complete ? 'text-grey-7' : ''"
-      ><q-icon name="event" /> {{ task.date }}</q-item-label>
+      >
+        <q-icon name="event"/>
+        {{ task.date }}
+      </q-item-label>
+    </q-item-section>
+
+    <q-item-section side>
+      <q-btn flat round dense icon="delete"
+      @click.stop="promptToDelete(id)"/>
     </q-item-section>
 
   </q-item>
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+  import {mapMutations} from 'vuex';
+  import {deleteTask} from "src/store/module-tasks/mutations";
 
   export default {
     name: "Task",
 
     props: {
-      'task' : {
+      'task': {
         required: true,
         type: Object,
       },
@@ -41,7 +50,19 @@
     },
 
     methods: {
-      ...mapMutations('tasks', ['updateTask']),
+      ...mapMutations('tasks', ['updateTask', 'deleteTask']),
+
+      promptToDelete(id) {
+          this.$q.dialog({
+            dark: true,
+            title: 'Confirm',
+            message: 'Are you sure you want to delete this task?',
+            cancel: true,
+            persistent: true
+          }).onOk(() => {
+            this.deleteTask(id)
+          });
+      }
     }
   }
 </script>
