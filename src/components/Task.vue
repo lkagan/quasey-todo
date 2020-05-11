@@ -2,11 +2,11 @@
   <q-item
     clickable
     v-ripple
-    @click="task.complete = ! task.complete"
+    @click="updateTask({id, updates: {complete: !task.complete}})"
     :class="task.complete ? 'text-grey-7' : ''"
   >
     <q-item-section side top>
-      <q-checkbox v-model="task.complete"/>
+      <q-checkbox v-model="task.complete" class="no-pointer-events"/>
     </q-item-section>
 
     <q-item-section>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex';
+
   export default {
     name: "Task",
 
@@ -37,6 +39,10 @@
         type: String,
       }
     },
+
+    methods: {
+      ...mapMutations('tasks', ['updateTask']),
+    }
   }
 </script>
 
