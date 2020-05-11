@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title class="absolute-center">
-          Todo
+          Quasey Tasks
         </q-toolbar-title>
 
       </q-toolbar>
@@ -17,7 +17,7 @@
     </q-footer>
 
     <q-drawer
-      width="250"
+      :width="250"
       v-model="leftDrawerOpen"
       :breakpoint="1023"
       show-if-above
@@ -53,7 +53,7 @@
         leftDrawerOpen: false,
         essentialLinks: [
           {
-            title: 'Todo',
+            title: 'Tasks',
             caption: '',
             icon: 'list',
             link: '/'
@@ -69,7 +69,18 @@
     }
   }
 </script>
-<style>
+<style scoped lang="scss">
+  .q-drawer {
+    .q-item.q-router-link--active, .q-item--active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .q-item {
+      color: #aaa;
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     .q-footer {
       display: none;

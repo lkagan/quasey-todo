@@ -1,4 +1,4 @@
-# Quasey Todo (quasey-todo)
+# Quasey Tasks (quasey-tasks)
 
 A Quasar Framework app
 

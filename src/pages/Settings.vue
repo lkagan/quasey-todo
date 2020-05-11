@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex">
-    <p>Todo page</p>
+    <p>Settings</p>
   </q-page>
 </template>
 

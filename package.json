@@ -1,8 +1,8 @@
 {
-  "name": "quasey-todo",
+  "name": "quasey-tasks",
   "version": "0.0.1",
   "description": "Task list app using Quasar Framework",
-  "productName": "Quasey Todo",
+  "productName": "Quasey Tasks",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "",

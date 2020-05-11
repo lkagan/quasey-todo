@@ -108,8 +108,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasey Todo',
-        short_name: 'Quasey Todo',
+        name: 'Quasey Tasks',
+        short_name: 'Quasey Tasks',
         description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
@@ -176,7 +176,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasey-todo'
+        appId: 'quasey-tasks'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
