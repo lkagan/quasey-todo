@@ -4,28 +4,7 @@
       <div class="q-pa-md full-width">
         <q-list separator>
 
-          <q-item
-            clickable
-            v-for="task in tasks" :key="task.id" v-ripple
-            @click="task.complete = ! task.complete"
-            :class="task.complete ? 'text-grey-7' : ''"
-          >
-            <q-item-section side top>
-              <q-checkbox v-model="task.complete"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>{{ task.name }}</q-item-label>
-            </q-item-section>
-
-            <q-item-section side top>
-              <q-item-label
-                caption
-                :class="task.complete ? 'text-grey-7' : ''"
-              ><q-icon name="event" /> {{ task.date }}</q-item-label>
-            </q-item-section>
-
-          </q-item>
+         <Task v-for="(task, key) in tasks" :key="key" :task="task" :id="key"></Task>
 
         </q-list>
       </div>
@@ -36,10 +15,11 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import Task from "components/Task";
 
   export default {
     name: 'Tasks',
-
+    components: {Task},
     computed: {
       ...mapGetters('tasks', ['tasks']),
     }
