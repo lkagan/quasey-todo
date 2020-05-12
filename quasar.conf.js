@@ -58,7 +58,7 @@ module.exports = function (/* ctx */) {
       ],
 
       config: {
-        dark: true,
+        dark: false,
       },
     },
 

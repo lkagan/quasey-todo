@@ -72,12 +72,11 @@
 <style scoped lang="scss">
   .q-drawer {
     .q-item.q-router-link--active, .q-item--active {
-      background-color: $grey-9;
-      color: $grey-1;
+      background-color: $grey-4;
     }
 
     .q-item {
-      color: $grey-5;
+      color: $grey-10;
     }
   }
 
