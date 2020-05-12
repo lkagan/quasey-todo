@@ -2,7 +2,7 @@
   <q-card>
 
     <q-card-section class="row">
-      <div class="text-h6">Alert</div>
+      <div class="text-h6">Add Task</div>
       <q-space></q-space>
       <q-btn
         flat
@@ -17,6 +17,21 @@
     <q-card-section class="q-pt-none">
       <q-input v-model="taskToSubmit.name"
                label="Task name"/>
+
+      <q-input v-model="taskToSubmit.date"
+               label="Due date">
+        <template v-slot:append>
+          <q-icon name="event"
+                  class="cursor-pointer">
+            <q-popup-proxy transition-show="scale"
+                           transition-hide="scale">
+              <q-date v-model="taskToSubmit.date"
+                      mask="MM/DD/YYYY"/>
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
+
     </q-card-section>
 
     <q-card-actions align="right">
