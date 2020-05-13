@@ -14,44 +14,59 @@
       />
     </q-card-section>
 
-    <q-card-section class="q-pt-none">
-      <q-input v-model="taskToSubmit.name"
-               label="Task name"/>
+    <q-form @submit.prevent="submitForm">
+      <q-card-section class="q-pt-none">
+        <q-input v-model="taskToSubmit.name"
+                 label="Task name"
+                 :rules="[val => !!val || 'required']"
+        />
 
-      <q-input v-model="taskToSubmit.date"
-               label="Due date">
-        <template v-slot:append>
-          <q-icon name="event"
-                  class="cursor-pointer">
-            <q-popup-proxy transition-show="scale"
-                           transition-hide="scale">
-              <q-date v-model="taskToSubmit.date"
-                      mask="MM/DD/YYYY"/>
-            </q-popup-proxy>
-          </q-icon>
-        </template>
-      </q-input>
+        <q-input v-model="taskToSubmit.date"
+                 label="Due date">
+          <template v-slot:append>
+            <q-icon name="event"
+                    class="cursor-pointer">
+              <q-popup-proxy transition-show="scale"
+                             transition-hide="scale">
+                <q-date v-model="taskToSubmit.date"
+                        mask="MM/DD/YYYY"/>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
 
-    </q-card-section>
+      </q-card-section>
 
-    <q-card-actions align="right">
-      <q-btn flat
-             label="Save"
-             color="primary"
-             v-close-popup/>
-    </q-card-actions>
+      <q-card-actions align="right">
+        <q-btn
+          label="Save"
+          color="primary"
+          type="submit"
+        />
+      </q-card-actions>
+    </q-form>
   </q-card>
 </template>
 
 <script>
+  import { mapMutations } from 'vuex';
+
   export default {
     name: "AddTask",
 
     data() {
       return {
-        taskToSubmit: {name: '', complete: '', date: ''},
+        taskToSubmit: {name: '', complete: false, date: ''},
       }
     },
+
+    methods: {
+      ...mapMutations('tasks', ['addTask']),
+
+      submitForm() {
+        this.addTask(this.taskToSubmit);
+      }
+    }
   }
 </script>
 

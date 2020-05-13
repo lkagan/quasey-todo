@@ -13,7 +13,7 @@
       <q-item-label>{{ task.name }}</q-item-label>
     </q-item-section>
 
-    <q-item-section side top>
+    <q-item-section side top v-if="task.date">
       <q-item-label
         caption
         :class="task.complete ? 'text-grey-7' : ''"
