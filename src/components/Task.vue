@@ -3,7 +3,7 @@
     clickable
     v-ripple
     @click="updateTask({id, updates: {complete: !task.complete}})"
-    :class="task.complete ? 'text-grey-7' : ''"
+    :class="task.complete ? 'text-grey-5' : ''"
   >
     <q-item-section side top>
       <q-checkbox v-model="task.complete" class="no-pointer-events"/>
@@ -16,7 +16,7 @@
     <q-item-section side top v-if="task.date">
       <q-item-label
         caption
-        :class="task.complete ? 'text-grey-7' : ''"
+        :class="task.complete ? 'text-grey-5' : ''"
       >
         <q-icon name="event"/>
         {{ task.date }}

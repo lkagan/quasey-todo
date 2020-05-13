@@ -1,27 +1,19 @@
 <template>
   <q-card>
 
-    <q-card-section class="row">
-      <div class="text-h6">Add Task</div>
-      <q-space></q-space>
-      <q-btn
-        flat
-        round
-        color="primary"
-        icon="close"
-        dense
-        v-close-popup
-      />
-    </q-card-section>
+    <ModalHeader>Add Task</ModalHeader>
 
     <q-form @submit.prevent="submitForm">
       <q-card-section class="q-pt-none">
         <q-input v-model="taskToSubmit.name"
                  label="Task name"
+                 autofocus
+                 clearable
                  :rules="[val => !!val || 'required']"
         />
 
         <q-input v-model="taskToSubmit.date"
+                 clearable
                  label="Due date">
           <template v-slot:append>
             <q-icon name="event"
@@ -49,11 +41,12 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+  import {mapMutations} from 'vuex';
+  import ModalHeader from "components/ModalHeader";
 
   export default {
     name: "AddTask",
-
+    components: {ModalHeader},
     data() {
       return {
         taskToSubmit: {name: '', complete: false, date: ''},
@@ -65,6 +58,7 @@
 
       submitForm() {
         this.addTask(this.taskToSubmit);
+        this.$emit('close');
       }
     }
   }
