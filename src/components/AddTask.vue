@@ -5,13 +5,7 @@
 
     <q-form @submit.prevent="submitForm">
       <q-card-section class="q-pt-none">
-        <q-input v-model="taskToSubmit.name"
-                 label="Task name"
-                 autofocus
-                 clearable
-                 :rules="[val => !!val || 'required']"
-        />
-
+        <NameInput :task="taskToSubmit"></NameInput>
         <q-input v-model="taskToSubmit.date"
                  clearable
                  label="Due date">
@@ -42,11 +36,12 @@
 
 <script>
   import {mapMutations} from 'vuex';
-  import ModalHeader from "components/ModalHeader";
+  import ModalHeader from "components/Modal/Header";
+  import NameInput from "components/Modal/NameInput";
 
   export default {
     name: "AddTask",
-    components: {ModalHeader},
+    components: {NameInput, ModalHeader},
     data() {
       return {
         taskToSubmit: {name: '', complete: false, date: ''},
