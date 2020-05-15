@@ -6,21 +6,7 @@
     <q-form @submit.prevent="submitForm">
       <q-card-section class="q-pt-none">
         <NameInput :task="taskToSubmit"></NameInput>
-        <q-input v-model="taskToSubmit.date"
-                 clearable
-                 label="Due date">
-          <template v-slot:append>
-            <q-icon name="event"
-                    class="cursor-pointer">
-              <q-popup-proxy transition-show="scale"
-                             transition-hide="scale">
-                <q-date v-model="taskToSubmit.date"
-                        mask="MM/DD/YYYY"/>
-              </q-popup-proxy>
-            </q-icon>
-          </template>
-        </q-input>
-
+        <DateInput :task="taskToSubmit"></DateInput>
       </q-card-section>
 
       <q-card-actions align="right">
@@ -38,10 +24,11 @@
   import {mapMutations} from 'vuex';
   import ModalHeader from "components/Modal/Header";
   import NameInput from "components/Modal/NameInput";
+  import DateInput from "components/Modal/DateInput";
 
   export default {
     name: "AddTask",
-    components: {NameInput, ModalHeader},
+    components: {DateInput, NameInput, ModalHeader},
     data() {
       return {
         taskToSubmit: {name: '', complete: false, date: ''},
