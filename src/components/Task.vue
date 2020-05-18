@@ -24,9 +24,18 @@
     </q-item-section>
 
     <q-item-section side>
-      <q-btn flat round dense icon="delete"
-      @click.stop="promptToDelete(id)"/>
+      <q-btn flat round dense icon="edit"
+             @click.stop="showEditTask = true"/>
     </q-item-section>
+
+    <q-item-section side>
+      <q-btn flat round dense icon="delete"
+             @click.stop="promptToDelete(id)"/>
+    </q-item-section>
+
+    <q-dialog v-model="showEditTask">
+      <EditTask :task="task" :id="id" @close="showEditTask = false"></EditTask>
+    </q-dialog>
 
   </q-item>
 </template>
@@ -34,10 +43,11 @@
 <script>
   import {mapMutations} from 'vuex';
   import {deleteTask} from "src/store/module-tasks/mutations";
+  import EditTask from "components/EditTask";
 
   export default {
     name: "Task",
-
+    components: {EditTask},
     props: {
       'task': {
         required: true,
@@ -46,6 +56,12 @@
       'id': {
         required: true,
         type: String,
+      }
+    },
+
+    data() {
+      return {
+        showEditTask: false,
       }
     },
 
