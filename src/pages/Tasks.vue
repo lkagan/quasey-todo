@@ -2,14 +2,9 @@
   <q-page class="flex">
 
     <div class="q-pa-md full-width">
-      <q-list separator>
-
-        <Task v-for="(task, key) in tasks"
-              :key="key"
-              :task="task"
-              :id="key"></Task>
-
-      </q-list>
+        <tasks-todo :tasks="tasksTodo"></tasks-todo>
+      <hr>
+      <tasks-todo :tasks="tasksCompleted"></tasks-todo>
       <div class="absolute-bottom text-center q-mb-md">
         <q-btn size="24"
                round
@@ -30,11 +25,12 @@
   import {mapGetters} from 'vuex';
   import Task from "components/Task";
   import AddTask from "components/AddTask";
+  import TasksTodo from "components/TasksTodo";
 
   export default {
     name: 'Tasks',
 
-    components: {AddTask, Task},
+    components: {TasksTodo, AddTask, Task},
 
     data() {
       return {
@@ -43,7 +39,7 @@
     },
 
     computed: {
-      ...mapGetters('tasks', ['tasks']),
+      ...mapGetters('tasks', ['tasksCompleted', 'tasksTodo']),
     }
 
   }
