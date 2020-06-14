@@ -3,8 +3,8 @@
 
     <div class="q-pa-md full-width">
         <tasks-todo :tasks="tasksTodo"></tasks-todo>
-      <hr>
-      <tasks-todo :tasks="tasksCompleted"></tasks-todo>
+
+      <tasks-completd :tasks="tasksCompleted"></tasks-completd>
       <div class="absolute-bottom text-center q-mb-md">
         <q-btn size="24"
                round
@@ -26,11 +26,12 @@
   import Task from "components/Task";
   import AddTask from "components/AddTask";
   import TasksTodo from "components/TasksTodo";
+  import TasksCompletd from "components/TasksCompleted";
 
   export default {
     name: 'Tasks',
 
-    components: {TasksTodo, AddTask, Task},
+    components: {TasksCompletd, TasksTodo, AddTask, Task},
 
     data() {
       return {
