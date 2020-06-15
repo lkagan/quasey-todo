@@ -2,9 +2,8 @@
   <q-page class="flex">
 
     <div class="q-pa-md full-width">
-        <tasks-todo :tasks="tasksTodo"></tasks-todo>
-
-      <tasks-completd :tasks="tasksCompleted"></tasks-completd>
+      <tasks-todo :tasks="tasksTodo" v-if="Object.keys(tasksTodo).length"></tasks-todo>
+      <tasks-completd :tasks="tasksCompleted" v-if="Object.keys(tasksCompleted).length"></tasks-completd>
       <div class="absolute-bottom text-center q-mb-md">
         <q-btn size="24"
                round

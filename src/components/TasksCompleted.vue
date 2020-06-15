@@ -1,6 +1,6 @@
 <template>
   <div class="q-mt-lg">
-    <ListHeader bgColor="bg-grey-4">Completed</ListHeader>
+    <ListHeader bgColor="bg-grey-5">Completed</ListHeader>
     <q-list separator>
       <Task v-for="(task, key) in tasks"
             :key="key"
