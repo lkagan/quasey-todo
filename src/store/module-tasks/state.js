@@ -6,5 +6,7 @@ export default function () {
       'ID2': { name: 'Get bananas', complete: false, date: '5/13/2020' },
       'ID3': { name: 'Get apples', complete: false, date: '5/14/2020' },
     },
+
+    search: '',
   }
 }

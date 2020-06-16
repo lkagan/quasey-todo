@@ -1,2 +1,3 @@
-export function someAction (/* context */) {
+export function setSearch({commit}, search) {
+  commit('setSearch', search);
 }
