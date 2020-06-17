@@ -7,7 +7,6 @@ export function tasksFiltered(state) {
 
   if (state.search) {
     Object.keys(state.tasks).forEach(key => {
-      console.log(state.search);
       if (state.tasks[key].name.toLowerCase().includes(state.search.toLowerCase())) {
         tasks[key] = state.tasks[key];
       }
@@ -41,4 +40,12 @@ export function tasksCompleted(state, getters) {
   });
 
   return tasks;
+}
+
+export function hasTasksTodo(state, getters) {
+  return !! Object.keys(getters.tasksTodo).length;
+}
+
+export function hasTasksCompleted(state, getters) {
+  return !! Object.keys(getters.tasksCompleted).length;
 }

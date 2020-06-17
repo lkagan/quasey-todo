@@ -33,10 +33,6 @@
         }
       }
     },
-
-    mounted() {
-      console.log('Search', this.searchField);
-    }
   };
 </script>
 
