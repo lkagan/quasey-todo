@@ -2,20 +2,21 @@ export function tasks(state) {
   return state.tasks;
 }
 
-export function tasksFiltered(state) {
+export function tasksFiltered(state, getters) {
   const tasks = [];
+  const tasksSorted = getters.tasksSorted;
 
   if (state.search) {
-    Object.keys(state.tasks).forEach(key => {
-      if (state.tasks[key].name.toLowerCase().includes(state.search.toLowerCase())) {
-        tasks[key] = state.tasks[key];
+    Object.keys(tasksSorted).forEach(key => {
+      if (tasksSorted[key].name.toLowerCase().includes(state.search.toLowerCase())) {
+        tasks[key] = tasksSorted[key];
       }
     });
 
     return tasks;
   }
 
-  return state.tasks;
+  return tasksSorted;
 }
 
 export function tasksTodo(state, getters) {
@@ -42,10 +43,30 @@ export function tasksCompleted(state, getters) {
   return tasks;
 }
 
+export function tasksSorted(state) {
+  const tasks = {};
+
+  const keys = Object.keys(state.tasks).sort((a, b) => {
+    const aName = state.tasks[a].name.toLowerCase();
+    const bName = state.tasks[b].name.toLowerCase();
+
+    if (aName > bName) {
+      return 1;
+    } else if (aName < bName) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+  keys.forEach(key => {tasks[key] = state.tasks[key]});
+  return tasks;
+}
+
 export function hasTasksTodo(state, getters) {
-  return !! Object.keys(getters.tasksTodo).length;
+  return !!Object.keys(getters.tasksTodo).length;
 }
 
 export function hasTasksCompleted(state, getters) {
-  return !! Object.keys(getters.tasksCompleted).length;
+  return !!Object.keys(getters.tasksCompleted).length;
 }
