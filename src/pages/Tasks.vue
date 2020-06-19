@@ -1,7 +1,10 @@
 <template>
   <q-page class="flex">
     <div class="q-pa-md full-width">
-      <Search class="q-mb-md"></Search>
+      <div class="row q-mb-md">
+        <Search class="column"></Search>
+        <Sort class="column"></Sort>
+      </div>
       <p v-if="search && !hasTasksTodo">No Search Results</p>
       <NoTasks v-if="showNoTasksBanner"></NoTasks>
       <tasks-todo :tasks="tasksTodo" v-if="hasTasksTodo"></tasks-todo>
@@ -27,11 +30,12 @@
   import TasksCompletd from "components/TasksCompleted";
   import NoTasks from "components/NoTasks";
   import Search from "components/Tools/Search";
+  import Sort from "components/Tools/Sort";
 
   export default {
     name: 'Tasks',
 
-    components: {NoTasks, TasksCompletd, TasksTodo, AddTask, Task, Search},
+    components: {Sort, NoTasks, TasksCompletd, TasksTodo, AddTask, Task, Search},
 
     data() {
       return {

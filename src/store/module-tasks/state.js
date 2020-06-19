@@ -8,5 +8,6 @@ export default function () {
     },
 
     search: '',
+    sort: 'name',
   }
 }

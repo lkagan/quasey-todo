@@ -47,8 +47,9 @@ export function tasksSorted(state) {
   const tasks = {};
 
   const keys = Object.keys(state.tasks).sort((a, b) => {
-    const aName = state.tasks[a].name.toLowerCase();
-    const bName = state.tasks[b].name.toLowerCase();
+    const sortField = state.sort;
+    const aName = state.tasks[a][sortField].toLowerCase();
+    const bName = state.tasks[b][sortField].toLowerCase();
 
     if (aName > bName) {
       return 1;

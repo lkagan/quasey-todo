@@ -36,5 +36,8 @@
   };
 </script>
 
-<style>
+<style scoped>
+  .q-input {
+    flex-grow: 1;
+  }
 </style>

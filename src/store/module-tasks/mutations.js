@@ -16,3 +16,7 @@ export function addTask(state, task) {
 export function setSearch(state, search) {
   state.search = search;
 }
+
+export function setSort(state, sort) {
+  state.sort = sort;
+}
