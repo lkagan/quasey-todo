@@ -3,6 +3,7 @@
            label="Task name"
            autofocus
            clearable
+           v-select-all
            :rules="[val => !!val || 'required']"
   />
 
@@ -17,8 +18,20 @@
         required: true,
         type: Object,
       }
-    }
+    },
 
+    directives: {
+      selectAll: {
+        bind(el) {
+          const input = el.querySelector('.q-field__native');
+          input.addEventListener('focus', () => {
+            if (input.value.length) {
+              input.select();
+            }
+          });
+        }
+      }
+    }
   }
 </script>
 
