@@ -20,7 +20,7 @@
         :class="task.complete ? 'text-grey-5' : ''"
       >
         <q-icon name="event"/>
-        {{ task.date }}
+        {{ task.date | niceDate }}
       </q-item-label>
     </q-item-section>
 
@@ -45,6 +45,7 @@
   import {mapMutations} from 'vuex';
   import {deleteTask} from "src/store/module-tasks/mutations";
   import EditTask from "components/EditTask";
+  import {date} from 'quasar';
 
   export default {
     name: "Task",
@@ -70,15 +71,21 @@
       ...mapMutations('tasks', ['updateTask', 'deleteTask']),
 
       promptToDelete(id) {
-          this.$q.dialog({
-            dark: true,
-            title: 'Confirm',
-            message: 'Are you sure you want to delete this task?',
-            cancel: true,
-            persistent: true
-          }).onOk(() => {
-            this.deleteTask(id)
-          });
+        this.$q.dialog({
+          dark: true,
+          title: 'Confirm',
+          message: 'Are you sure you want to delete this task?',
+          cancel: true,
+          persistent: true
+        }).onOk(() => {
+          this.deleteTask(id)
+        });
+      }
+    },
+
+    filters: {
+      niceDate(value) {
+        return date.formatDate(value, 'MMM D');
       }
     }
   }
