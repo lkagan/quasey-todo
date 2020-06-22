@@ -4,6 +4,7 @@
     v-ripple
     @click="updateTask({id, updates: {complete: !task.complete}})"
     :class="task.complete ? 'text-grey-5' : ''"
+    v-touch-hold:1000.mouse="() => {showEditTask = true}"
   >
     <q-item-section side top>
       <q-checkbox v-model="task.complete" class="no-pointer-events"/>
