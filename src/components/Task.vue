@@ -11,7 +11,9 @@
         </q-item-section>
 
         <q-item-section>
-            <q-item-label>{{ task.name }}</q-item-label>
+            <q-item-label
+                v-html="$options.filters.searchHighlight(task.name, search)">
+            </q-item-label>
         </q-item-section>
 
         <q-item-section side top v-if="task.date">
@@ -43,7 +45,7 @@
 </template>
 
 <script>
-    import {mapMutations} from 'vuex';
+    import {mapState, mapMutations} from 'vuex';
     import {deleteTask} from "src/store/module-tasks/mutations";
     import EditTask from "components/EditTask";
     import {date} from 'quasar';
@@ -68,6 +70,10 @@
             }
         },
 
+        computed: {
+            ...mapState('tasks', ['search']),
+        },
+
         methods: {
             ...mapMutations('tasks', ['updateTask', 'deleteTask']),
 
@@ -87,6 +93,15 @@
         filters: {
             niceDate(value) {
                 return date.formatDate(value, 'MMM D');
+            },
+
+            searchHighlight(taskName, search) {
+                if (search) {
+                    const regex = new RegExp(search, 'ig');
+                    return taskName.replace(regex, `<span class="bg-yellow-6">${search}</span>`);
+                }
+
+                return taskName;
             }
         }
     }
