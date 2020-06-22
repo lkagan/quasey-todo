@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import { selectAll } from '../../directives/select-all'
+
   export default {
     name: "NameInput",
 
@@ -21,16 +23,7 @@
     },
 
     directives: {
-      selectAll: {
-        bind(el) {
-          const input = el.querySelector('.q-field__native');
-          input.addEventListener('focus', () => {
-            if (input.value.length) {
-              input.select();
-            }
-          });
-        }
-      }
+      selectAll,
     }
   }
 </script>

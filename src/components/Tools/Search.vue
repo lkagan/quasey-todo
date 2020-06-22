@@ -3,6 +3,7 @@
     v-model="searchField"
     label="Search"
     outlined
+    v-select-all
   >
     <template v-slot:append>
       <q-icon
@@ -18,8 +19,13 @@
 
 <script>
   import {mapState} from 'vuex';
+  import {selectAll} from '../../directives/select-all'
 
   export default {
+    directives: {
+      selectAll,
+    },
+
     computed: {
       ...mapState('tasks', ['search']),
 
