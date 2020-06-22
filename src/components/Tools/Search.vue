@@ -4,6 +4,7 @@
     label="Search"
     outlined
     v-select-all
+    @keyup.esc="searchField = ''"
   >
     <template v-slot:append>
       <q-icon
