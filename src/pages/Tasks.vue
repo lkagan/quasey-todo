@@ -6,9 +6,12 @@
         <Sort class="column"></Sort>
       </div>
       <p v-if="search && !hasTasksTodo">No Search Results</p>
-      <NoTasks v-if="showNoTasksBanner"></NoTasks>
-      <tasks-todo :tasks="tasksTodo" v-if="hasTasksTodo"></tasks-todo>
-      <tasks-completd :tasks="tasksCompleted" v-if="hasTasksCompleted"></tasks-completd>
+        <div class="relative-position">
+            <NoTasks v-if="showNoTasksBanner"></NoTasks>
+            <tasks-todo :tasks="tasksTodo" v-if="hasTasksTodo"></tasks-todo>
+            <tasks-completd :tasks="tasksCompleted"
+                            v-if="hasTasksCompleted"></tasks-completd>
+        </div>
       <div class="absolute-bottom text-center q-mb-md">
         <q-btn size="24" round color="primary" icon="add"
                @click="showAddTaskForm = true"></q-btn>

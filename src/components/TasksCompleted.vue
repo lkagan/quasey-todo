@@ -1,13 +1,19 @@
 <template>
-  <div class="q-mt-lg">
-    <ListHeader bgColor="bg-grey-5">Completed</ListHeader>
-    <q-list separator>
-      <Task v-for="(task, key) in tasks"
-            :key="key"
-            :task="task"
-            :id="key"></Task>
-    </q-list>
-  </div>
+    <transition
+    appear
+    enter-active-class="animated zoomIn"
+    leave-active-class="animated zoomOut"
+    >
+        <div class="q-mt-lg">
+            <ListHeader bgColor="bg-grey-5">Completed</ListHeader>
+            <q-list separator>
+                <Task v-for="(task, key) in tasks"
+                      :key="key"
+                      :task="task"
+                      :id="key"></Task>
+            </q-list>
+        </div>
+    </transition>
 </template>
 
 <script>
