@@ -8,14 +8,15 @@
             <p v-if="search && !hasTasksTodo">No Search Results</p>
             <q-scroll-area class="q-scroll-area-tasks">
                 <NoTasks v-if="showNoTasksBanner"></NoTasks>
-                    <tasks-todo :tasks="tasksTodo" v-if="hasTasksTodo"></tasks-todo>
-                    <tasks-completd :tasks="tasksCompleted"
-                                    v-if="hasTasksCompleted"
-                    class="q-mb-xl"></tasks-completd>
+                <tasks-todo :tasks="tasksTodo" v-if="hasTasksTodo"></tasks-todo>
+                <tasks-completd :tasks="tasksCompleted"
+                                v-if="hasTasksCompleted"
+                                class="q-mb-xl"></tasks-completd>
             </q-scroll-area>
-            <div class="absolute-bottom text-center q-mb-md">
+            <div class="absolute-bottom text-center q-mb-md no-pointer-events">
                 <q-btn size="24" round color="primary" icon="add"
-                       @click="showAddTaskForm = true"></q-btn>
+                       @click="showAddTaskForm = true"
+                       class="all-pointer-events"></q-btn>
             </div>
         </div>
 
