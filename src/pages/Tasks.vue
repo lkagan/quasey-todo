@@ -64,12 +64,15 @@
                 'hasTasksCompleted',
             ]),
 
+            ...mapGetters('settings', ['settings']),
+
             search() {
                 return this.$store.state.tasks.search;
             },
 
             showNoTasksBanner() {
-                return !this.hasTasksTodo && !this.search;
+                return !this.hasTasksTodo && !this.search
+                    && !this.settings.showTasksInOneList;
             },
         },
 
