@@ -1,3 +1,5 @@
+import {LocalStorage} from 'quasar'
+
 export default {
     namespaced: true,
 
@@ -10,12 +12,27 @@ export default {
     mutations: {
         setShowTasksInOneList(state, value) {
             state.settings.showTasksInOneList = value;
+        },
+
+        setSettings(state, settings) {
+            state.settings = settings;
         }
     },
 
     actions: {
-        setShowTasksInOneList({commit}, value) {
+        setShowTasksInOneList({commit, dispatch}, value) {
             commit('setShowTasksInOneList', value);
+            dispatch('saveSettings');
+        },
+
+        saveSettings({state}) {
+            LocalStorage.set('settings', state.settings);
+        },
+
+        getSettings({commit}) {
+            if (LocalStorage.has('settings')) {
+                commit('setSettings', LocalStorage.getItem('settings'));
+            }
         }
     },
 
