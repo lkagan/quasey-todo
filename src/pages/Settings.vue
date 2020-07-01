@@ -33,6 +33,15 @@
                     <q-icon name="chevron_right"></q-icon>
                 </q-item-section>
             </q-item>
+
+            <q-item tag="label" v-ripple @click="emailUs">
+                <q-item-section>
+                    <q-item-label>Email Us</q-item-label>
+                </q-item-section>
+                <q-item-section side top>
+                    <q-icon name="chevron_right"></q-icon>
+                </q-item-section>
+            </q-item>
         </q-list>
     </q-page>
 </template>
@@ -61,6 +70,10 @@
 
             visitWebsite() {
                 openURL('http://www.google.com');
+            },
+
+            emailUs() {
+                window.location.href="mailto:hello@example.com?subject=Tasks Feedback";
             }
         }
     }
