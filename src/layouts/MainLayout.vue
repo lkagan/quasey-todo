@@ -6,6 +6,14 @@
           Quasey Tasks
         </q-toolbar-title>
 
+          <q-btn icon-right="account_circle"
+                 label="Login"
+                 flat
+                 class="absolute-right"
+                 to="/auth"
+
+          ></q-btn>
+
       </q-toolbar>
     </q-header>
 
