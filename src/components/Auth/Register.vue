@@ -1,5 +1,5 @@
 <template>
-    <q-form @submit.prevent="submitForm">
+    <q-form @submit.prevent="submitForm" ref="passwordForm">
         <div class="row q-mb-md">
             <q-banner class="bg-grey-3 col">
                 <template v-slot:avatar>
@@ -60,12 +60,13 @@
 
         methods: {
             submitForm() {
-                this.$refs.email.validate();
-                this.$refs.password.validate();
-
-                if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
-                    console.log('register user');
-                }
+                this.$refs.passwordForm.validate().then(success => {
+                    if (success) {
+                        console.log('register user');
+                    } else {
+                        console.error('could not submit form');
+                    }
+                });
             },
 
             isValidEmailAddress(email) {
