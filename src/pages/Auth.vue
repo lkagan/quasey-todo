@@ -22,12 +22,12 @@
             <q-tab-panels v-model="tab" animated>
                 <q-tab-panel name="login">
                     <div class="text-h6">Login</div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    <Register :tab="tab"></Register>
                 </q-tab-panel>
 
                 <q-tab-panel name="register">
                     <div class="text-h6">Register</div>
-                    <Register></Register>
+                    <Register :tab="tab"></Register>
                 </q-tab-panel>
             </q-tab-panels>
         </q-card>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import Register from "components/Auth/Register";
+    import Register from "components/Auth/LoginRegister";
     export default {
         name: "Auth",
         components: {Register},

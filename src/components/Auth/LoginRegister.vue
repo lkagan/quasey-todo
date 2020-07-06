@@ -5,7 +5,7 @@
                 <template v-slot:avatar>
                     <q-icon name="account_circle" color="primary"/>
                 </template>
-                Register to access your Tasks anywhere
+                {{ tab | titleCase }} to access your Tasks anywhere
             </q-banner>
         </div>
         <div class="row q-mb-md">
@@ -37,7 +37,7 @@
             <q-space></q-space>
             <q-btn
                 color="primary"
-                label="Register"
+                :label="tab"
                 type="submit"
             ></q-btn>
         </div>
@@ -48,6 +48,13 @@
 <script>
     export default {
         name: "Register",
+
+        props: {
+            tab: {
+                required: true,
+                type: String,
+            },
+        },
 
         data() {
             return {
@@ -62,7 +69,11 @@
             submitForm() {
                 this.$refs.passwordForm.validate().then(success => {
                     if (success) {
-                        console.log('register user');
+                        if (this.tab === 'login') {
+                            console.log('login user');
+                        } else {
+                            console.log('regsiter user');
+                        }
                     } else {
                         console.error('could not submit form');
                     }
@@ -70,7 +81,13 @@
             },
 
             isValidEmailAddress(email) {
-                return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+                return email.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
+            }
+        },
+
+        filters: {
+            titleCase(value) {
+                return value.charAt(0).toUpperCase() + value.substr(1);
             }
         }
     }
