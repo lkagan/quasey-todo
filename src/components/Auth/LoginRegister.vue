@@ -46,6 +46,8 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: "Register",
 
@@ -66,13 +68,15 @@
         },
 
         methods: {
+            ...mapActions('auth', ['registerUser']),
+
             submitForm() {
                 this.$refs.passwordForm.validate().then(success => {
                     if (success) {
                         if (this.tab === 'login') {
                             console.log('login user');
                         } else {
-                            console.log('regsiter user');
+                            this.registerUser(this.formData);
                         }
                     } else {
                         console.error('could not submit form');
