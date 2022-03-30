@@ -1,3 +1,4 @@
+import { LocalStorage } from 'quasar';
 import {firebaseApp as firebase} from "boot/firebase";
 
 export default {
@@ -8,11 +9,18 @@ export default {
     mutations: {},
 
     actions: {
-        registerUser({}, payload) {
-            console.log(payload);
-            firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
-                .then(response => console.log(response))
-                .catch(error => console.log(error.message));
+        handleAuthStateChanged({ commit }) {
+            firebase.onAuthStateChanged( user => {
+                if (user) {
+                    commit('setLoggedIn', true)
+                    LocalStorage.set('loggedIn', true)
+                    this.$router.push('/')
+                } else {
+                    commit('setLoggedIn', false)
+                    LocalStorage.set('loggedIn', false)
+                    this.$router.push('/auth')
+                }
+            })
         }
     },
 
